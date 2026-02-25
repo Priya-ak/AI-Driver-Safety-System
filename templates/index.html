@@ -1,0 +1,157 @@
+<html>
+
+<head>
+
+<title>AI Driver Safety</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:black;
+color:white;
+text-align:center;
+}
+
+/* Stars */
+
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+pointer-events:none;
+}
+
+
+/* Container */
+
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+
+/* Video */
+
+.videoBox{
+margin-top:20px;
+border-radius:15px;
+box-shadow:0px 0px 20px cyan;
+overflow:hidden;
+}
+
+
+/* Card */
+
+.card{
+margin-top:20px;
+background:#111;
+padding:20px;
+border-radius:15px;
+box-shadow:0px 0px 25px cyan;
+}
+
+
+/* Buttons */
+
+button{
+
+width:200px;
+padding:12px;
+margin:10px;
+font-size:16px;
+border:none;
+border-radius:8px;
+color:white;
+cursor:pointer;
+
+}
+
+.start{background:#00cccc;}
+.stop{background:#ff4444;}
+.history{background:#3366ff;}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<div class="container">
+
+<h1>🚗 AI Driver Safety System</h1>
+
+<h3>Drowsiness Detection</h3>
+
+
+<div class="videoBox">
+
+<img id="videoFeed" src="/video" width="100%">
+
+</div>
+
+
+<div class="card">
+
+
+<button class="start"
+onclick="startCamera()">
+Start Detection
+</button>
+
+
+<button class="stop"
+onclick="stopCamera()">
+Stop Detection
+</button>
+
+
+<br>
+
+<a href="/history">
+
+<button class="history">
+View History
+</button>
+
+</a>
+
+
+</div>
+
+</div>
+
+
+<script>
+
+function startCamera(){
+
+fetch('/start')
+
+.then(()=>{
+document.getElementById("videoFeed").src="/video";
+})
+
+}
+
+function stopCamera(){
+
+fetch('/stop')
+
+.then(()=>{
+document.getElementById("videoFeed").src="";
+})
+
+}
+
+</script>
+
+
+</body>
+
+</html>
